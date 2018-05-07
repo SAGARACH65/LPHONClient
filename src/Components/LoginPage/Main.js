@@ -3,6 +3,7 @@ import { Router, Scene, Actions, ActionConst } from 'react-native-router-flux';
 
 import LoginScreen from './LoginScreen';
 import SecondScreen from './SecondScreen';
+import SignupScreen from '../SignupPage/SignupScreen'
 
 export default class LoginPage extends Component {
     render() {
@@ -20,6 +21,14 @@ export default class LoginPage extends Component {
                            animation='fade'
                            hideNavBar={true}
                     />
+                    <Scene key="SignupScreen"
+                           component={SignupScreen}
+                           animation='fade'
+                           hideNavBar={true}
+                    />
+
+
+
                 </Scene>
             </Router>
         );

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Dimensions from 'Dimensions';
 import {StyleSheet, ImageBackground,StatusBar} from 'react-native';
 
+import bgSrc from './wallpaper.png';
 
-
-export default class Wallpaper extends Component {
+export default class SignupBack extends Component {
     render() {
         return (
-            <ImageBackground style={styles.picture} source={this.props.bgSrc}>
+            <ImageBackground style={styles.picture} source={bgSrc}>
                 {this.props.children}
                 <StatusBar hidden={true} />
             </ImageBackground>

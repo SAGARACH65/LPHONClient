@@ -17,9 +17,11 @@ import spinner from './loading.gif';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
-const MARGIN = 40;
+const MARGIN=40;
+
 
 export default class ButtonSubmit extends Component {
+
     constructor() {
         super();
 
@@ -63,6 +65,9 @@ export default class ButtonSubmit extends Component {
     }
 
     render() {
+        //TODO check here
+       const btn_name= this.props.button_name;
+
         const changeWidth = this.buttonAnimated.interpolate({
             inputRange: [0, 1],
             outputRange: [DEVICE_WIDTH - MARGIN, MARGIN],
@@ -73,6 +78,7 @@ export default class ButtonSubmit extends Component {
         });
 
         return (
+
             <View style={styles.container}>
                 <Animated.View style={{width: changeWidth}}>
                     <TouchableOpacity
@@ -84,7 +90,7 @@ export default class ButtonSubmit extends Component {
                                 source={spinner}
                             style={styles.image} />
                         ) : (
-                            <Text style={styles.text}>LOGIN</Text>
+                            <Text style={styles.text}>{btn_name}</Text>
                         )}
                     </TouchableOpacity>
                     <Animated.View
@@ -99,7 +105,7 @@ export default class ButtonSubmit extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        top: -95,
+marginTop:40,
         alignItems: 'center',
         justifyContent: 'flex-start',
     },

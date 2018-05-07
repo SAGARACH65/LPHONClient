@@ -6,14 +6,17 @@ import Wallpaper from './Wallpaper';
 import ButtonSubmit from './ButtonSubmit';
 import SignupSection from './SignupSection';
 
+import bgSrc from './loginBack.jpg';
+
 export default class LoginScreen extends Component {
     render() {
         return (
-            <Wallpaper>
+            <Wallpaper bgSrc={bgSrc}>
                 <Logo />
                 <Form />
+                <ButtonSubmit button_name="Login" />
                 <SignupSection />
-                <ButtonSubmit />
+
             </Wallpaper>
         );
     }
