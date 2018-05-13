@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Form from './Form';
 import Wallpaper from './SignupBack';
-import ButtonSubmit from '../LoginPage/ButtonSubmit';
+import ParentofButtonandForm from './ParentofButtonandForm';
 import SimpleText from './SimpleText';
+
 
 
 export default class SignupScreen extends Component {
@@ -11,8 +12,7 @@ export default class SignupScreen extends Component {
         return (
             <Wallpaper>
                 <SimpleText/>
-                <Form />
-                <ButtonSubmit  button_name="SIGN UP" />
+                <ParentofButtonandForm/>
             </Wallpaper>
         );
     }

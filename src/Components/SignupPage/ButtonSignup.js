@@ -10,9 +10,9 @@ import {
     Alert,
     View,
 } from 'react-native';
+import {Actions, ActionConst} from 'react-native-router-flux';
 
-
-import spinner from './loading.gif';
+import spinner from '../LoginPage/loading.gif';
 //import MainScreen from "../ViewPager/Main";
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
@@ -20,19 +20,49 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN=40;
 
 
-export default class ButtonSubmit extends Component {
+export default class ButtonSignup extends Component {
 
     constructor() {
         super();
 
         this.state = {
             isLoading: false,
+            signInEmail: '',
+            signInPassword: '',
+            signInInterests:''
         };
 
         this.buttonAnimated = new Animated.Value(0);
         this.growAnimated = new Animated.Value(0);
         this._onPress = this._onPress.bind(this);
     }
+
+    onEmailChange = event => {
+        this.setState({ signInEmail: event.target.value })
+    }
+    onPasswordChange = event => {
+        this.setState({ signInPassword: event.target.value })
+    }
+
+    onSubmitSignIn = () => {
+        console.log(this.state);
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: { 'content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: this.state.signInEmail,
+                password: this.state.signInPassword,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data === 'success') {
+                    this.props.onRouteChange('home')
+                }
+            })
+    }
+
+
 
     _onPress() {
         if (this.state.isLoading) return;
@@ -49,8 +79,8 @@ export default class ButtonSubmit extends Component {
         }, 2000);
 
         setTimeout(() => {
-            console.log(this.props.username+this.props.password);
-
+            //Actions.MainScreen();
+            console.log(this.props.username+this.state.password+this.state.interests);
             this.setState({isLoading: false});
             this.buttonAnimated.setValue(0);
             this.growAnimated.setValue(0);
@@ -67,7 +97,7 @@ export default class ButtonSubmit extends Component {
 
     render() {
 
-       const btn_name= this.props.button_name;
+        const btn_name= this.props.button_name;
 
         const changeWidth = this.buttonAnimated.interpolate({
             inputRange: [0, 1],
@@ -89,7 +119,7 @@ export default class ButtonSubmit extends Component {
                         {this.state.isLoading ? (
                             <ImageBackground
                                 source={spinner}
-                            style={styles.image} />
+                                style={styles.image} />
                         ) : (
                             <Text style={styles.text}>{btn_name}</Text>
                         )}
@@ -106,7 +136,7 @@ export default class ButtonSubmit extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-marginTop:40,
+        marginTop:40,
         alignItems: 'center',
         justifyContent: 'flex-start',
     },

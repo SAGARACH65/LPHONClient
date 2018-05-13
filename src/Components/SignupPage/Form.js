@@ -4,10 +4,6 @@ import Dimensions from 'Dimensions';
 import {
     StyleSheet,
     KeyboardAvoidingView,
-    View,
-    ActivityIndicator,
-    TouchableOpacity,
-    ImageBackground,
 } from 'react-native';
 
 import UserInput from './UserInputSignupPage';
@@ -33,12 +29,32 @@ export default class Form extends Component {
             : this.setState({showPass: true, press: false});
     }
 
+    onEmailChange = (text) => {
+        this.props.changeUN(text);
+        //  console.log(this.state.signInPassword);
+
+    };
+
+
+    onPasswordChange = (text) => {
+
+        this.props.changePW(text);
+        // console.log(this.state.signInEmail);
+
+    };
+    onInterestsChange = (text) => {
+
+        this.props.changeInterests(text);
+
+
+    };
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
 
                 <UserInput
                     source={usernameImg}
+                    textchange={this.onEmailChange}
                     placeholder="Username"
                     autoCapitalize={'none'}
                     returnKeyType={'done'}
@@ -47,6 +63,7 @@ export default class Form extends Component {
                 <UserInput source={passwordImg}
                            secureTextEntry={this.state.showPass}
                            placeholder="Password"
+                           textchange={this.onPasswordChange()}
                            returnKeyType={'done'}
                            autoCapitalize={'none'}
                            autoCorrect={false}
@@ -54,6 +71,7 @@ export default class Form extends Component {
                 <UserInput source={eyeImg}
                            secureTextEntry={this.state.showPass}
                            placeholder="Interests"
+                           textchange={this.onInterestsChange()}
                            returnKeyType={'done'}
                            autoCapitalize={'none'}
                            autoCorrect={false}

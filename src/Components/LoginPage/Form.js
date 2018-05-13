@@ -24,6 +24,7 @@ export default class Form extends Component {
         this.state = {
             showPass: true,
             press: false,
+           
         };
         this.showPass = this.showPass.bind(this);
     }
@@ -34,29 +35,48 @@ export default class Form extends Component {
             : this.setState({showPass: true, press: false});
     }
 
+
+    onEmailChange = (text) => {
+        //  this.setState({signInEmail: text});
+        this.props.changeUN(text);
+        //  console.log(this.state.signInPassword);
+
+    };
+
+
+    onPasswordChange = (text) => {
+        // this.setState({signInPassword: text});
+        this.props.changePW(text);
+        // console.log(this.state.signInEmail);
+
+    };
+
+
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <UserInput
                     source={usernameImg}
+                    textchange={this.onEmailChange}
                     placeholder="Username"
                     autoCapitalize={'none'}
                     returnKeyType={'done'}
                     autoCorrect={false}
                 />
                 <UserInput source={passwordImg}
-                    secureTextEntry={this.state.showPass}
-                    placeholder="Password"
-                    returnKeyType={'done'}
-                    autoCapitalize={'none'}
-                    autoCorrect={false}
+                           secureTextEntry={this.state.showPass}
+                           placeholder="Password"
+                           textchange={this.onPasswordChange}
+                           returnKeyType={'done'}
+                           autoCapitalize={'none'}
+                           autoCorrect={false}
                 />
                 <TouchableOpacity
                     activeOpacity={0.7}
                     style={styles.btnEye}
                     onPress={this.showPass}>
                     <ImageBackground source={eyeImg}
-                           style={styles.iconEye} />
+                                     style={styles.iconEye}/>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         );

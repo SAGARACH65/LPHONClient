@@ -4,6 +4,7 @@ import Logo from './Logo';
 import Form from './Form';
 import Wallpaper from './Wallpaper';
 import ButtonSubmit from './ButtonSubmit';
+import ParentofButtonandForm from './ParentofButtonandForm';
 import SignupSection from './SignupSection';
 
 import bgSrc from './loginBack.jpg';
@@ -13,8 +14,9 @@ export default class LoginScreen extends Component {
         return (
             <Wallpaper bgSrc={bgSrc}>
                 <Logo />
-                <Form />
-                <ButtonSubmit button_name="Login" />
+                <ParentofButtonandForm/>
+                {/*<Form />*/}
+                {/*<ButtonSubmit button_name="Login" />*/}
                 <SignupSection />
 
             </Wallpaper>
