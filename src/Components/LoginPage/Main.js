@@ -13,18 +13,19 @@ export default class LoginPage extends Component {
                     <Scene key="loginScreen"
                            component={LoginScreen}
                            animation='fade'
-                           hideNavBar={true}
+                           hideNavBar
                            initial={true}
                     />
                     <Scene key="MainScreen"
                            component={MainScreen}
                            animation='fade'
 
+                           navigationBarStyle={{ backgroundColor:'#faa0cc', borderBottomColor: 'transparent', borderBottomWidth: 0 }}
                     />
                     <Scene key="SignupScreen"
                            component={SignupScreen}
                            animation='fade'
-                           hideNavBar={true}
+
                     />
 
 

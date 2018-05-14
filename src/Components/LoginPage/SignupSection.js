@@ -8,7 +8,7 @@ export default class SignupSection extends Component {
     _onPress() {
         setTimeout(() => {
             Actions.SignupScreen();
-        }, 1000);
+        }, 500);
 
     }
 

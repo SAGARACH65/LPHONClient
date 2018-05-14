@@ -49,7 +49,7 @@ export default class ButtonSubmit extends Component {
 
         setTimeout(() => {
             this._onGrow();
-        }, 2000);
+        }, 1000);
 
         setTimeout(() => {
             console.log(this.props.username+this.props.password);
@@ -57,7 +57,7 @@ export default class ButtonSubmit extends Component {
             this.setState({isLoading: false});
             this.buttonAnimated.setValue(0);
             this.growAnimated.setValue(0);
-        }, 2300);
+        }, 1000);
     }
 
     _onGrow() {
