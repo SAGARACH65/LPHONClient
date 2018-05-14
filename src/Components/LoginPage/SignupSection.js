@@ -12,7 +12,6 @@ export default class SignupSection extends Component {
 
     }
 
-
     render() {
         return (
             <View style={styles.container}>

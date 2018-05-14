@@ -1,25 +1,25 @@
-const apiURL="192.168.0.1/api/";
-export default{
-  async fetchLogin(username,password){
-     try{
-         //TODO needed to add the actual call later
-         const response=await fetch(apiURL+'/login'+username+password);
-        return(await response.json());
-
-     }catch(error){
-         //TODO handle error in UI later
-         console.log(error);
-     }
-
-  },
-
-    async fetchSignup(username,password,interests){
-        try{
+const apiURL = "192.168.0.1/api/";
+export default {
+    async fetchLogin(username, password) {
+        try {
             //TODO needed to add the actual call later
-            const response=await fetch(apiURL+'/signup'+username+password+interests);
-            return(await response.json());
+            const response = await fetch(apiURL + '/login' + username + password);
+            return (await response.json());
 
-        }catch(error){
+        } catch (error) {
+            //TODO handle error in UI later
+            console.log(error);
+        }
+
+    },
+
+    async fetchSignup(username, password, interests) {
+        try {
+            //TODO needed to add the actual call later
+            const response = await fetch(apiURL + '/signup' + username + password + interests);
+            return (await response.json());
+
+        } catch (error) {
             //TODO handle error in UI later
             console.log(error);
         }
