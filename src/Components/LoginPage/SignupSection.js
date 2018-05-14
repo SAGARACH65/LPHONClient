@@ -6,10 +6,10 @@ import {Actions} from "react-native-router-flux/index";
 
 export default class SignupSection extends Component {
     _onPress() {
-        // setTimeout(() => {
-        //     Actions.SignupPage();
-        // }, 1000);
-        Actions.SignupScreen();
+        setTimeout(() => {
+            Actions.SignupScreen();
+        }, 1000);
+
     }
 
 

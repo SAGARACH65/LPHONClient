@@ -13,7 +13,10 @@ import {
 
 
 import spinner from './loading.gif';
-//import MainScreen from "../ViewPager/Main";
+// import Ajax from '../../Ajax';
+import {Actions} from "react-native-router-flux/index";
+
+//import MainScreen from "../MainPage/Main";
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -50,7 +53,7 @@ export default class ButtonSubmit extends Component {
 
         setTimeout(() => {
             console.log(this.props.username+this.props.password);
-
+            Actions.MainScreen();
             this.setState({isLoading: false});
             this.buttonAnimated.setValue(0);
             this.growAnimated.setValue(0);

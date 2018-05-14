@@ -63,15 +63,14 @@ export default class Form extends Component {
                 <UserInput source={passwordImg}
                            secureTextEntry={this.state.showPass}
                            placeholder="Password"
-                           textchange={this.onPasswordChange()}
+                           textchange={this.onPasswordChange}
                            returnKeyType={'done'}
                            autoCapitalize={'none'}
                            autoCorrect={false}
                 />
                 <UserInput source={eyeImg}
-                           secureTextEntry={this.state.showPass}
                            placeholder="Interests"
-                           textchange={this.onInterestsChange()}
+                           textchange={this.onInterestsChange}
                            returnKeyType={'done'}
                            autoCapitalize={'none'}
                            autoCorrect={false}

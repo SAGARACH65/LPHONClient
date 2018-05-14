@@ -15,8 +15,6 @@ export default class LoginScreen extends Component {
             <Wallpaper bgSrc={bgSrc}>
                 <Logo />
                 <ParentofButtonandForm/>
-                {/*<Form />*/}
-                {/*<ButtonSubmit button_name="Login" />*/}
                 <SignupSection />
 
             </Wallpaper>

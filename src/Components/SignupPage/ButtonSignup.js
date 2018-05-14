@@ -13,7 +13,9 @@ import {
 import {Actions, ActionConst} from 'react-native-router-flux';
 
 import spinner from '../LoginPage/loading.gif';
-//import MainScreen from "../ViewPager/Main";
+// import Ajax from '../../Ajax';
+
+//import MainScreen from "../MainPage/Main";
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
@@ -27,9 +29,9 @@ export default class ButtonSignup extends Component {
 
         this.state = {
             isLoading: false,
-            signInEmail: '',
-            signInPassword: '',
-            signInInterests:''
+            // signInEmail: '',
+            // signInPassword: '',
+            // signInInterests:''
         };
 
         this.buttonAnimated = new Animated.Value(0);
@@ -37,30 +39,6 @@ export default class ButtonSignup extends Component {
         this._onPress = this._onPress.bind(this);
     }
 
-    onEmailChange = event => {
-        this.setState({ signInEmail: event.target.value })
-    }
-    onPasswordChange = event => {
-        this.setState({ signInPassword: event.target.value })
-    }
-
-    onSubmitSignIn = () => {
-        console.log(this.state);
-        fetch('http://localhost:3000/signin', {
-            method: 'post',
-            headers: { 'content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: this.state.signInEmail,
-                password: this.state.signInPassword,
-            }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data === 'success') {
-                    this.props.onRouteChange('home')
-                }
-            })
-    }
 
 
 
