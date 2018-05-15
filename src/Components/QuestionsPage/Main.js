@@ -12,20 +12,22 @@ import {
 } from "native-base";
 import {View, TouchableOpacity} from 'react-native';
 
+import {Actions} from "react-native-router-flux/index";
 
 export default class Main extends Component {
     _onPress() {
-        console.log("pressed");
+
+        Actions.QuestionDetails();
     }
 
     _onPressAskQ() {
-        console.log("pressed");
+        Actions.AskQuestion();
     }
 
     render() {
         return (
             <Container>
-                <Content padder onPress={this._onPress()}>
+                <Content padder>
                     < TouchableOpacity onPress={this._onPress}>
                         <Card>
                             <CardItem header bordered>
@@ -60,8 +62,8 @@ export default class Main extends Component {
                 <Footer>
 
                     <FooterTab>
-                        < TouchableOpacity onPress={this._onPressAskQ}>
-                            <Button full style={{ marginLeft:120}}>
+                        <TouchableOpacity>
+                            <Button onPress={this._onPressAskQ} full style={{marginLeft: 120}}>
                                 <Text>Ask A Question</Text>
                             </Button>
                         </TouchableOpacity>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, Header, Content, Item, Input, Left, Button, Icon, Title, Body, Form, Textarea,Right} from 'native-base';
 import {StatusBar, Text, TextInput} from 'react-native';
 
-export default class AskQuestion extends Component {
+export default class AddAnswer extends Component {
     render() {
         return (
             <Container>
@@ -14,7 +14,7 @@ export default class AskQuestion extends Component {
                         </Button>
                     </Left>
                     <Body>
-                    <Title style={{textAlign: 'left'}}>Ask A Question</Title>
+                    <Title style={{textAlign: 'left'}}>Answer</Title>
                     </Body>
                     <Right>
                         <Button >
@@ -22,18 +22,12 @@ export default class AskQuestion extends Component {
                         </Button>
                     </Right>
                 </Header>
-
                 <Content padder>
-                    <Form>
-                        <Item rounded style={{margin: 10}}>
-                            <Input placeholder='Question Title'/>
-                        </Item>
-                        <Textarea rowSpan={15} bordered placeholder="Question Body"/>
-                        <Item rounded style={{marginTop: 20}}>
-                            <Input placeholder='Tags'/>
-                        </Item>
-                    </Form>
+
+                        <Textarea rowSpan={21} bordered placeholder="Your Answer...."/>
+
                 </Content>
+
 
 
             </Container>
