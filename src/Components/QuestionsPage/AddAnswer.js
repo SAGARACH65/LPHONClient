@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Container, Header, Content, Item, Input, Left, Button, Icon, Title, Body, Form, Textarea,Right} from 'native-base';
 import {StatusBar, Text, TextInput} from 'react-native';
 
+
 export default class AddAnswer extends Component {
     render() {
         return (

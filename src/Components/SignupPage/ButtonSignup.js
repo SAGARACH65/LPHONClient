@@ -16,6 +16,25 @@ import spinner from '../LoginPage/loading.gif';
 // import Ajax from '../../Ajax';
 
 //import MainScreen from "../MainPage/Main";
+//imput format
+// {
+//     "username":"hello",
+//     "email":"hello@gmail.com",
+//     "password":"hello",
+//     "tags":[
+//     "samsung",
+//     "bitcoin"
+//
+// ]
+//
+// }
+
+//output
+// {
+//     "status": "success",
+//     "message": "user registered"
+// }
+
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;

@@ -86,7 +86,7 @@ export default class QuestionDetails extends Component {
                 <Content>
                     <Card>
                         <CardItem header bordered>
-                            <Text style={{fontSize: 14}}>ANSWERS</Text>
+                            <Text style={{fontSize: 14}}>ANSWERS(1)</Text>
                         </CardItem>
 
                         <CardItem bordered>

@@ -22,7 +22,18 @@ const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN=40;
 
+//input
+// //{
+// "username":"qwerty",
+//     "password":"hello"
+// }
 
+
+//ouptupt
+// {
+//     "status": "success",
+//     "token": "pxSS-GQ3XT9VbGE"
+// }
 export default class ButtonSubmit extends Component {
 
     constructor() {
