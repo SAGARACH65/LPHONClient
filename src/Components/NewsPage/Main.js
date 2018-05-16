@@ -106,7 +106,7 @@ export default class Main extends Component {
                                             <Body>
                                             <Text style={{fontWeight: 'bold'}}>{data.title}</Text>
                                             {/*<Text note>Random Writer</Text>*/}
-                                            /*discarding the time */
+                                            {/*discarding the time */}
                                             <Text note>{data.publishedAt.substr(0,10)}</Text>
                                             </Body>
                                         </Left>
