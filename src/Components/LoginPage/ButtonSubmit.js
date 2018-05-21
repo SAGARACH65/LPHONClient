@@ -8,32 +8,24 @@ import {
     Easing,
     ImageBackground,
     Alert,
+    AsyncStorage,
+    NetInfo,
     View,
 } from 'react-native';
 
-
+import Toast from 'react-native-same-toast';
 import spinner from './loading.gif';
 // import Ajax from '../../Ajax';
 import {Actions} from "react-native-router-flux/index";
 
-//import MainScreen from "../MainPage/Main";
 
+const apiURL = "http://192.168.1.5:3000/api/";
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
-const MARGIN=40;
+const MARGIN = 40;
 
-//input
-// //{
-// "username":"qwerty",
-//     "password":"hello"
-// }
+// import Toast, {DURATION} from 'react-native-easy-toast'
 
-
-//ouptupt
-// {
-//     "status": "success",
-//     "token": "pxSS-GQ3XT9VbGE"
-// }
 export default class ButtonSubmit extends Component {
 
     constructor() {
@@ -48,27 +40,73 @@ export default class ButtonSubmit extends Component {
         this._onPress = this._onPress.bind(this);
     }
 
-    _onPress() {
+    async _onPress() {
         if (this.state.isLoading) return;
-
+        // let c = this.props.username;
+        // let b = this.props.password;
         this.setState({isLoading: true});
-        Animated.timing(this.buttonAnimated, {
-            toValue: 1,
-            duration: 200,
-            easing: Easing.linear,
-        }).start();
 
-        setTimeout(() => {
-            this._onGrow();
-        }, 1000);
+        NetInfo.isConnected.fetch().then(isConnected => {
+            //      console.log('First, is ' + (isConnected ? 'online' : 'offline'));
+            if (isConnected) {
+                fetch(apiURL + '/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: this.props.username,
 
-        setTimeout(() => {
-            console.log(this.props.username+this.props.password);
-            Actions.MainScreen();
-            this.setState({isLoading: false});
-            this.buttonAnimated.setValue(0);
-            this.growAnimated.setValue(0);
-        }, 1000);
+                        password: this.props.password
+                    })
+                })
+                    .then((response) => response.json())
+                    .then(async (responseJson) => {
+                        // console.log(responseJson);//Json resoponse is here
+
+                        if (responseJson.status === 'success') {
+                            // setTimeout(() => {
+                            //     this._onGrow();
+                            // }, 100);
+
+                            // this.refs.toast.show('Logged in successful');
+
+                            await AsyncStorage.setItem('token', responseJson.token);
+
+
+                            this._onGrow();
+
+
+                            this.setState({isLoading: false});
+                            this.buttonAnimated.setValue(0);
+                            this.growAnimated.setValue(0);
+
+                            Actions.MainScreen();
+                            //moving on to the main screen if server return success
+
+                        } else {
+                            this.setState({isLoading: false});
+                            // this.refs.toast.show('Wrong username or Password');
+                            Toast.showWithGravity("Wrong Username or Password", Toast.SHORT, Toast.BOTTOM);
+
+                        }
+                    })
+                    .catch((error) => {
+                        this.setState({isLoading: false});
+                        console.log(error);
+                        Toast.showWithGravity("Server Error", Toast.SHORT, Toast.BOTTOM);
+
+                    });
+
+            } else {
+                this.setState({isLoading: false});
+                Toast.showWithGravity("Please Connect to Internet", Toast.SHORT, Toast.BOTTOM);
+
+
+            }
+
+        });
+
     }
 
     _onGrow() {
@@ -81,7 +119,7 @@ export default class ButtonSubmit extends Component {
 
     render() {
 
-       const btn_name= this.props.button_name;
+        const btn_name = this.props.button_name;
 
         const changeWidth = this.buttonAnimated.interpolate({
             inputRange: [0, 1],
@@ -103,7 +141,7 @@ export default class ButtonSubmit extends Component {
                         {this.state.isLoading ? (
                             <ImageBackground
                                 source={spinner}
-                            style={styles.image} />
+                                style={styles.image}/>
                         ) : (
                             <Text style={styles.text}>{btn_name}</Text>
                         )}
@@ -112,6 +150,7 @@ export default class ButtonSubmit extends Component {
                         style={[styles.circle, {transform: [{scale: changeScale}]}]}
                     />
                 </Animated.View>
+                {/*<Toast ref="toast"/>*/}
             </View>
         );
     }
@@ -120,7 +159,7 @@ export default class ButtonSubmit extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-marginTop:40,
+        marginTop: 40,
         alignItems: 'center',
         justifyContent: 'flex-start',
     },

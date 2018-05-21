@@ -25,7 +25,6 @@ let dataArray = {
         "courseAuthor": "Noah",
         "url": "https://cdn.cnn.com/cnnnext/dam/assets/160608181115-ark-theme-park-kentucky-orig-nws-00000430-exlarge-169.jpg"
     }
-
     ]
 
 };
@@ -68,13 +67,11 @@ export default class Main extends Component {
 
                                 </TouchableOpacity>
                             );
-
                         }
                     )}
 
                 </Content>
             </Container>
-
 
         );
     }

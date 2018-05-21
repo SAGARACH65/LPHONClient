@@ -30,6 +30,11 @@ export default class Form extends Component {
     }
 
     onEmailChange = (text) => {
+        this.props.changeEM(text);
+        //  console.log(this.state.signInPassword);
+
+    };
+    onUserNameChange = (text) => {
         this.props.changeUN(text);
         //  console.log(this.state.signInPassword);
 
@@ -54,8 +59,16 @@ export default class Form extends Component {
 
                 <UserInput
                     source={usernameImg}
-                    textchange={this.onEmailChange}
+                    textchange={this.onUserNameChange}
                     placeholder="Username"
+                    autoCapitalize={'none'}
+                    returnKeyType={'done'}
+                    autoCorrect={false}
+                />
+                <UserInput
+                    source={usernameImg}
+                    textchange={this.onEmailChange}
+                    placeholder="Email"
                     autoCapitalize={'none'}
                     returnKeyType={'done'}
                     autoCorrect={false}

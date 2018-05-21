@@ -12,6 +12,7 @@ export default class ParentofButtonandForm extends Component {
 
         this.state = {
             username: '',
+            email:'',
             password : '',
             interests:''
 
@@ -22,6 +23,14 @@ export default class ParentofButtonandForm extends Component {
         // console.log(receivedPW);
         this.setState({
             username: receivedUN,
+
+        });
+    };
+
+    changeEM=(receivedEM)=> {
+        // console.log(receivedPW);
+        this.setState({
+            email: receivedEM,
 
         });
     };
@@ -42,8 +51,8 @@ export default class ParentofButtonandForm extends Component {
     render() {
         return [
 
-            <Form changeUN={this.changeUN} changePW={this.changePW} changeInterests={this.changeInterests}/>,
-            <ButtonSignup  button_name="SIGN UP"  username={this.state.username} password={this.state.password} interests={this.state.interests}/>
+            <Form changeUN={this.changeUN} changePW={this.changePW} changeEM={this.changeEM} changeInterests={this.changeInterests}/>,
+            <ButtonSignup  button_name="SIGN UP"  username={this.state.username} email={this.state.email} password={this.state.password} interests={this.state.interests}/>
 
         ];
 

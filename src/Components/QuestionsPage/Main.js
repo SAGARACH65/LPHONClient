@@ -24,12 +24,10 @@ let dataArray = {
         "How to perform such an operation, what's the good practice? I would use a delegate in pure native app but here, both views are handled by the NavigatorIOS instance.",
         "askedBY": "Sagar Acharya",
         "date": "14th March",
-        "tags": [{"name": "Programming"}, {"name": "Node.js"}],
+        "tags": [{"name": "Programming"}, {"name": "React.js"}],
         "answers": [{
             "name": "Tom Hanks",
-            "answer": "\n" +
-            "\n" +
-            "You should rewrite your constructor function to get the data from a dynamic way. Then when the page reloads, it would get a correct data which includes the new task. Here you get the data from a static array, which would not change.\n" +
+            "answer": "You should rewrite your constructor function to get the data from a dynamic way. Then when the page reloads, it would get a correct data which includes the new task. Here you get the data from a static array, which would not change.\n" +
             "\n" +
             "Save tasks list to local file or Firebase, and read when construct.\n",
             "date": "14th March"
@@ -108,7 +106,7 @@ let dataArray = {
                 },
                 {
                     "name": "Tom Hanks",
-                    "answer": "HEllo",
+                    "answer": "Hello",
                     "date": "14th March"
                 }]
         }
@@ -119,11 +117,9 @@ let dataArray = {
 
 export default class Main extends Component {
 
-
     _onPressAskQ() {
         Actions.AskQuestion();
     }
-
     render() {
         return (
             <Container>
@@ -150,10 +146,8 @@ export default class Main extends Component {
                                                                 </Button>
                                                             </View>
                                                         );
-
                                                     }
                                                 )}
-
                                             </View>
                                             </Body>
                                         </CardItem>
@@ -163,7 +157,6 @@ export default class Main extends Component {
                                     </Card>
                                 </TouchableOpacity>
                             );
-
                         }
                     )}
 
@@ -182,7 +175,7 @@ export default class Main extends Component {
                 </Footer>
 
             </Container>
-            ////{color:'#bcbbbb',fontStyle:'italics'}
+
         );
     }
 }

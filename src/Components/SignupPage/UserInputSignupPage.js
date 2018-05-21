@@ -10,6 +10,7 @@ export default class UserInput extends Component {
 
                 <TextInput
                     style={styles.input}
+                    onChangeText={(text)=> this.props.textchange(text)}
                     placeholder={this.props.placeholder}
                     secureTextEntry={this.props.secureTextEntry}
                     autoCorrect={this.props.autoCorrect}
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: 'rgba(255, 255, 255, 0.4)',
         width: DEVICE_WIDTH - 40,
-        height: 50,
+        height: 40,
         marginHorizontal: 20,
         paddingLeft: 45,
         borderRadius: 20,
