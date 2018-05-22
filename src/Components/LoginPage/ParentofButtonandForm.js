@@ -11,7 +11,7 @@ export default class ParentofButtonandForm extends Component {
 
         this.state = {
             username: '',
-            password : '',
+            password : ''
 
         };
     }
