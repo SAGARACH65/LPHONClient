@@ -11,7 +11,7 @@ import {
     View, NetInfo,
 } from 'react-native';
 
-const apiURL = "http://192.168.1.5:3000/api/";
+const apiURL = "http://192.168.1.4:3000/api/";
 import {Actions, ActionConst} from 'react-native-router-flux';
 
 import spinner from '../LoginPage/loading.gif';

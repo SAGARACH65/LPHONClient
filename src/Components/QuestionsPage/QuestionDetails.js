@@ -22,8 +22,10 @@ import {StatusBar, Text, View, TouchableOpacity} from 'react-native';
 import {Actions} from "react-native-router-flux/index";
 
 export default class QuestionDetails extends Component {
+
     _onPressAnswer() {
-        Actions.AddAnswer();
+       let a= this.props.dataArray.title;
+        Actions.AddAnswer({id: a});
     }
 
     render() {
@@ -40,13 +42,10 @@ export default class QuestionDetails extends Component {
                         <Body>
                         <Title style={{textAlign: 'left'}}>LPOHN</Title>
                         </Body>
-
                     </Header>
 
 
                     <Content>
-
-
                         <Card>
                             <CardItem header bordered>
                                 <Text style={{fontSize: 19}}>{this.props.dataArray.title}</Text>
@@ -56,11 +55,11 @@ export default class QuestionDetails extends Component {
                                 <Body>
                                 <View style={{flexDirection: "row"}}>
 
-                                    {this.props.dataArray.tags.map((data) => {
+                                    {this.props.dataArray.tags.map((tag) => {
                                             return (
                                                 <View style={{marginRight: 10}}>
                                                     <Button light small block style={{width: 125}}>
-                                                        <Text style={{fontSize: 10}}>{data.name}</Text>
+                                                        <Text style={{fontSize: 10}}>{tag}</Text>
                                                     </Button>
                                                 </View>
                                             );
@@ -76,12 +75,11 @@ export default class QuestionDetails extends Component {
                                 </Body>
                             </CardItem>
                             <CardItem footer bordered>
-                                <Text>asked by {this.props.dataArray.askedBY} {this.props.dataArray.date} </Text>
+                                <Text>asked
+                                    by {this.props.dataArray.askedBy} on {this.props.dataArray.askedDate.substr(0, 10)} </Text>
                             </CardItem>
                         </Card>
-
                     </Content>
-
 
                     <Content>
                         <Card>
@@ -91,7 +89,6 @@ export default class QuestionDetails extends Component {
 
                         </Card>
                     </Content>
-
 
                     {this.props.dataArray.answers.map((data) => {
                             return (<Content>
@@ -106,12 +103,9 @@ export default class QuestionDetails extends Component {
                                         </CardItem>
 
                                         <CardItem>
-                                            <Text>answered by {data.name} {data.date}</Text>
+                                            <Text>answered by {data.answeredBy} on {data.answeredDate.substr(0, 10)}</Text>
                                         </CardItem>
-
-
                                     </Card>
-
                                 </Content>
                             );
 
@@ -124,7 +118,7 @@ export default class QuestionDetails extends Component {
 
                         <FooterTab>
                             <TouchableOpacity>
-                                <Button onPress={this._onPressAnswer} full style={{marginLeft: 140}}>
+                                <Button onPress={()=>   Actions.AddAnswer({id: this.props.dataArray.id})} full style={{marginLeft: 140}}>
                                     <Text>Add Answer</Text>
                                 </Button>
                             </TouchableOpacity>
