@@ -10,9 +10,9 @@ import {
     Footer,
     FooterTab
 } from "native-base";
-import {View, TouchableOpacity, NetInfo, AsyncStorage,RefreshControl} from 'react-native';
+import {View, TouchableOpacity, NetInfo, AsyncStorage, RefreshControl} from 'react-native';
 
-const apiUrl = 'http://192.168.1.4:3000/api/getQuestions';
+const apiUrl = 'http://192.168.43.91:3000/api/getQuestions';
 import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 
@@ -51,6 +51,7 @@ export default class Main extends Component {
             }
         });
     }
+
     _onRefresh = async () => {
         this.setState({refreshing: true});
         NetInfo.isConnected.fetch().then(async isConnected => {

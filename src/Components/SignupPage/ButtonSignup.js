@@ -11,7 +11,7 @@ import {
     View, NetInfo,
 } from 'react-native';
 
-const apiURL = "http://192.168.1.4:3000/api/";
+const apiURL = "http://192.168.43.91:3000/api/";
 import {Actions, ActionConst} from 'react-native-router-flux';
 
 import spinner from '../LoginPage/loading.gif';
@@ -44,7 +44,7 @@ export default class ButtonSignup extends Component {
         NetInfo.isConnected.fetch().then(isConnected => {
             //      console.log('First, is ' + (isConnected ? 'online' : 'offline'));
             if (isConnected) {
-                 let tags = (this.props.interests.split(" "));
+                let tags = (this.props.interests.split(" "));
                 fetch(apiURL + '/register', {
                     method: 'POST',
                     headers: {
@@ -54,11 +54,11 @@ export default class ButtonSignup extends Component {
                         username: this.props.username,
                         email: this.props.email,
                         password: this.props.password,
-                         tags: tags
+                        tags: tags
                     })
                 })
                     .then((response) => response.json())
-                    .then( (responseJson) => {
+                    .then((responseJson) => {
                         // console.log(responseJson);//Json resoponse is here
 
                         if (responseJson.status === 'success') {

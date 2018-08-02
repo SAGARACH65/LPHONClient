@@ -19,7 +19,7 @@ import spinner from './loading.gif';
 import {Actions} from "react-native-router-flux/index";
 
 
-const apiURL = "http://192.168.1.4:3000/api/";
+const apiURL = "http://192.168.43.91:3000/api/";
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;

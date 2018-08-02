@@ -6,7 +6,7 @@ import MainScreen from '../MainPage/Main';
 import SignupScreen from '../SignupPage/SignupScreen';
 import AskQuestion from '../QuestionsPage/AskQuestion';
 import QuestionDetails from '../QuestionsPage/QuestionDetails';
-
+import  CourseDetails from '../CoursesPage/CoursesDetails';
 import AddAnswer from '../QuestionsPage/AddAnswer';
 export default class LoginPage extends Component {
     render() {
@@ -29,6 +29,12 @@ export default class LoginPage extends Component {
                                borderBottomWidth: 0
                            }}
                     />
+                    <Scene key="CourseDetails"
+                           component={CourseDetails}
+                           animation='fade'
+
+                    />
+
                     <Scene key="SignupScreen"
                            component={SignupScreen}
                            animation='fade'

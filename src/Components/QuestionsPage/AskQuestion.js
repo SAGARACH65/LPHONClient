@@ -4,7 +4,7 @@ import {AsyncStorage, NetInfo, StatusBar, Text} from 'react-native';
 import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
 
-const apiUrl = 'http://192.168.1.4:3000/api/askQuestion';
+const apiUrl = 'http://192.168.43.91:3000/api/askQuestion';
 let title, body, tag;
 export default class AskQuestion extends Component {
     constructor() {

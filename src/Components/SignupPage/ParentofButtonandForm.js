@@ -14,7 +14,7 @@ export default class ParentofButtonandForm extends Component {
             username: '',
             email:'',
             password : '',
-            interests:''
+            interests: ''
 
         };
     }
