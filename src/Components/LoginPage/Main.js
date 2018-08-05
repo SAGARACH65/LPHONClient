@@ -8,6 +8,8 @@ import AskQuestion from '../QuestionsPage/AskQuestion';
 import QuestionDetails from '../QuestionsPage/QuestionDetails';
 import  CourseDetails from '../CoursesPage/CoursesDetails';
 import AddAnswer from '../QuestionsPage/AddAnswer';
+
+import AddVideo from '../CoursesPage/AddVideos'
 export default class LoginPage extends Component {
     render() {
         return (
@@ -31,6 +33,11 @@ export default class LoginPage extends Component {
                     />
                     <Scene key="CourseDetails"
                            component={CourseDetails}
+                           animation='fade'
+
+                    />
+                    <Scene key="AddVideo"
+                           component={AddVideo}
                            animation='fade'
 
                     />

@@ -3,11 +3,12 @@ import React, {Component} from 'react';
 import {View, Image, TouchableOpacity, AsyncStorage, NetInfo, RefreshControl} from 'react-native';
 
 import {
-    Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body
+    Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Footer, FooterTab
 } from 'native-base';
 import Search from 'react-native-search-box';
 import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
+import AddVideo from "./AddVideos";
 
 //proxy test data
 // let dataArray = {
@@ -66,6 +67,10 @@ export default class Main extends Component {
                 Toast.showWithGravity("No internet connection", Toast.SHORT, Toast.BOTTOM);
             }
         });
+    }
+
+    _onPressAddVid() {
+        Actions.AddVideo();
     }
 
     _onRefresh = async () => {
@@ -151,6 +156,18 @@ export default class Main extends Component {
                     )}
 
                 </Content>
+
+                <Footer>
+                    <FooterTab>
+                        <TouchableOpacity>
+                            <Button onPress={this._onPressAddVid} full style={{marginLeft: 120}}>
+                                <Text>Add Video</Text>
+                            </Button>
+                        </TouchableOpacity>
+                    </FooterTab>
+
+                </Footer>
+
             </Container>
 
         );

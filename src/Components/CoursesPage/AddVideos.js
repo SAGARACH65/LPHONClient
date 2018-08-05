@@ -3,32 +3,39 @@ import {
     Container,
     Header,
     Content,
+    Item,
+    Input,
     Left,
     Button,
     Icon,
     Title,
     Body,
+    Form,
     Textarea,
     Right
 } from 'native-base';
-import {AsyncStorage, NetInfo, StatusBar, Text, TextInput} from 'react-native';
+import {AsyncStorage, NetInfo, StatusBar, Text} from 'react-native';
 import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
 
-const apiUrl = 'http://192.168.43.91:3000/api/answerQuestion';
-let questionId, answer;
-export default class AddAnswer extends Component {
+const apiUrl = 'http://192.168.43.91:3000/api/addVideo';
+let title, body, tag;
+export default class AddVideos extends Component {
     constructor() {
         super();
         this.state = {
-            answer: ''
+            title: '',
+            details: '',
+            tags: '',
+            imageLink: ''
         }
     }
 
-    sendAnswer() {
+    sendVideo() {
         NetInfo.isConnected.fetch().then(async isConnected => {
             const token = await AsyncStorage.getItem('token');
             if (isConnected) {
+                let tags = tag.split(" ");
                 fetch(apiUrl, {
                     method: 'POST',
                     headers: {
@@ -36,20 +43,18 @@ export default class AddAnswer extends Component {
                     },
                     body: JSON.stringify({
                         token: token,
-                        answer: answer,
-                        id: questionId
+                        title: title,
+                        details: body,
+                        tags: tags,
+                        imageLink: imageLink
                     })
                 })
                     .then((response) => response.json())
                     .then((responseJson) => {
                         if (responseJson.status === 'success') {
-                            Toast.showWithGravity("Answer Added", Toast.SHORT, Toast.BOTTOM);
+                            Toast.showWithGravity("Video Added", Toast.SHORT, Toast.BOTTOM);
 
-                            //popping back to main page of ask question and it calls componentWillReceiveProps method
-                            //where according to the id we again navigate to questionDetails
-                            //this is done becoz questionDetails itself doesnot make the APi call
-                            //the main page passes the data to questionDetails
-                            setTimeout(() => Actions.pop({popNum: 2}, {refresh: {name: "hello"}}), 200);
+                            setTimeout(() => Actions.pop({refresh: {name: "hello"}}), 200);
 
                         } else {
                             Toast.showWithGravity("Please Try again Later", Toast.SHORT, Toast.BOTTOM);
@@ -67,15 +72,28 @@ export default class AddAnswer extends Component {
         });
     }
 
-    _onAnswerChange(answer) {
+    _onTitleChange(title) {
         this.setState({
-            answer: answer
+            title: title
+        });
+    }
+
+    _onBodyChange(body) {
+        this.setState({
+            body: body
+        });
+    }
+
+    _onTagsChange(tags) {
+        this.setState({
+            tags: tags
         });
     }
 
     render() {
-        answer = this.state.answer;
-        questionId = this.props.id;
+        title = this.state.title;
+        body = this.state.body;
+        tag = this.state.tags.toLocaleLowerCase();
         return (
             <Container>
                 <StatusBar hidden={false}/>
@@ -86,18 +104,30 @@ export default class AddAnswer extends Component {
                         </Button>
                     </Left>
                     <Body>
-                    <Title style={{textAlign: 'left'}}>Answer</Title>
+                    <Title style={{textAlign: 'left'}}>Ask A Question</Title>
                     </Body>
                     <Right>
-                        <Button onPress={this.sendAnswer}>
-                            <Text style={{color: '#ffffff'}}>POST</Text>
+                        <Button onPress={this.sendVideo}>
+                            <Text style={{color: '#ffffff'}}>LIST</Text>
                         </Button>
                     </Right>
                 </Header>
+
                 <Content padder>
-                    <Textarea onChangeText={(text) => this._onAnswerChange(text)} rowSpan={21} bordered
-                              placeholder="Your Answer...."/>
+                    <Form>
+                        <Item rounded style={{margin: 10}}>
+                            <Input onChangeText={(text) => this._onTitleChange(text)} on placeholder='Video Title'/>
+                        </Item>
+                        <Textarea onChangeText={(text) => this._onBodyChange(text)} rowSpan={10} bordered
+                                  placeholder="Video Details"/>
+                        <Item rounded style={{marginTop: 20}}>
+                            <Input onChangeText={(text) => this._onTagsChange(text)} placeholder='Tags'/>
+                        </Item>
+                    </Form>
                 </Content>
+
+
+
             </Container>
 
         );

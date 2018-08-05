@@ -11,11 +11,92 @@ import {
     Title,
     Body,
 } from 'native-base';
-import {StatusBar, Text, View, TouchableOpacity,Image} from 'react-native';
+import {StatusBar, Text, View, TouchableOpacity, Image, NetInfo, AsyncStorage} from 'react-native';
 import {Actions} from "react-native-router-flux/index";
+import Toast from "react-native-same-toast";
 
+
+const apiUrl = 'http://192.168.43.91:3000/api/addVideoToProfile';
+const apiUrlLike = 'http://192.168.43.91:3000/api/addLikeDislike';
 export default class CoursesDetails extends Component {
-//TODO add like and dislike with an option to upload videos and
+
+    async onPressLike(like) {
+        const token = await AsyncStorage.getItem('token');
+        NetInfo.isConnected.fetch().then(isConnected => {
+
+            if (isConnected) {
+                fetch(apiUrlLike, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: token,
+                        title: this.props.dataArray.title,
+                        like: like
+                    })
+                })
+                    .then((response) => response.json())
+                    .then(async (responseJson) => {
+                        // console.log(responseJson);//Json resoponse is here
+
+                        if (responseJson.status === 'success') {
+
+
+                        } else {
+                            this.setState({isLoading: false});
+                            // this.refs.toast.show('Wrong username or Password');
+                            Toast.showWithGravity("something went wrong", Toast.SHORT, Toast.BOTTOM);
+
+                        }
+                    })
+                    .catch((error) => {
+                        this.setState({isLoading: false});
+                        console.log(error);
+                        Toast.showWithGravity("Server Error", Toast.SHORT, Toast.BOTTOM);
+
+                    });
+
+            } else {
+                this.setState({isLoading: false});
+                Toast.showWithGravity("Please Connect to Internet", Toast.SHORT, Toast.BOTTOM);
+
+
+            }
+
+        });
+    }
+
+//this tells the server that the client viewed the video
+    async componentDidMount() {
+        NetInfo.isConnected.fetch().then(async isConnected => {
+            const token = await AsyncStorage.getItem('token');
+            if (isConnected) {
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        token: token,
+                        title: this.props.dataArray.title
+                    })
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        //i have not error handled here
+                    })
+                    .catch((error) => {
+                        Toast.showWithGravity("Server main jsError", Toast.SHORT, Toast.BOTTOM);
+                    });
+
+            } else {
+                Toast.showWithGravity("No internet connection", Toast.SHORT, Toast.BOTTOM);
+            }
+        });
+    }
+
+
     render() {
         return (
             <Container>
@@ -53,6 +134,20 @@ export default class CoursesDetails extends Component {
                             </Body>
                         </CardItem>
                     </Card>
+
+
+                    <content>
+                        <Button dark onPress={this.onPressLike(1)}>
+                            <Icon type='Entypo' name='thumbs-up'/>
+                        </Button>
+                        <Button dark onPress={this.onPressLike(-1)}>
+                            <Icon type='Entypo' name='thumbs-down'/>
+                        </Button>
+                    </content>
+
+                    <Button block light>
+                        <Text>Download</Text>
+                    </Button>
 
                 </Content>
             </Container>
