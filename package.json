@@ -29,12 +29,12 @@
     "react": "16.3.1",
     "react-native": "0.55.3",
     "react-native-exit-app": "^1.0.0",
+    "react-native-file-picker": "0.0.11",
     "react-native-material-ui": "^1.22.3",
     "react-native-router-flux": "^3.37.0",
     "react-native-same-toast": "^1.0.1",
     "react-native-search-box": "0.0.17",
     "react-native-toolbar-component": "0.0.1",
-
     "tcomb-form-native": "^0.6.11"
   },
   "devDependencies": {

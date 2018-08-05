@@ -17,9 +17,10 @@ import {
 import {AsyncStorage, NetInfo, StatusBar, Text} from 'react-native';
 import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
+import FilePickerManager from 'react-native-file-picker';
 
 const apiUrl = 'http://192.168.43.91:3000/api/addVideo';
-let title, body, tag;
+let title, body, tag, imageLink;
 export default class AddVideos extends Component {
     constructor() {
         super();
@@ -27,7 +28,8 @@ export default class AddVideos extends Component {
             title: '',
             details: '',
             tags: '',
-            imageLink: ''
+            imageLink: '',
+            location: ''
         }
     }
 
@@ -90,10 +92,38 @@ export default class AddVideos extends Component {
         });
     }
 
+    _onLinkChange(link) {
+        this.setState({
+            imageLink: link
+        });
+    }
+
+    _onLocationChange(location) {
+
+        FilePickerManager.showFilePicker(null, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled file picker');
+            }
+            else if (response.error) {
+                console.log('FilePickerManager Error: ', response.error);
+            }
+            else {
+                this.setState({
+                    location: location
+                });
+            }
+        });
+
+
+    }
+
     render() {
         title = this.state.title;
         body = this.state.body;
         tag = this.state.tags.toLocaleLowerCase();
+        imageLink = this.state.imageLink;
         return (
             <Container>
                 <StatusBar hidden={false}/>
@@ -118,16 +148,23 @@ export default class AddVideos extends Component {
                         <Item rounded style={{margin: 10}}>
                             <Input onChangeText={(text) => this._onTitleChange(text)} on placeholder='Video Title'/>
                         </Item>
-                        <Textarea onChangeText={(text) => this._onBodyChange(text)} rowSpan={10} bordered
+                        <Textarea onChangeText={(text) => this._onBodyChange(text)} rowSpan={8} bordered
                                   placeholder="Video Details"/>
                         <Item rounded style={{marginTop: 20}}>
                             <Input onChangeText={(text) => this._onTagsChange(text)} placeholder='Tags'/>
                         </Item>
+                        <Item rounded style={{marginTop: 20}}>
+                            <Input onChangeText={(text) => this._onLinkChange(text)} placeholder='ImageLink'/>
+                        </Item>
+
+                        <Item rounded style={{marginTop: 20}}>
+                            <Input text={this.state.location} placeholder='ImageLocation'/>
+                            <Button transparent light onPress={this._onLocationChange}>
+                                <Text>...</Text>
+                            </Button>
+                        </Item>
                     </Form>
                 </Content>
-
-
-
             </Container>
 
         );
