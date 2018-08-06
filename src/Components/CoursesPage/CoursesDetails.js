@@ -15,10 +15,10 @@ import {StatusBar, Text, View, TouchableOpacity, Image, NetInfo, AsyncStorage} f
 import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 
-
 const apiUrl = 'http://192.168.1.4:3000/api/addVideoToProfile';
 const apiUrlLike = 'http://192.168.1.4:3000/api/addLikeDislike';
-export default class CoursesDetails extends Component {
+
+class CoursesDetails extends Component {
 
     async onPressLike(like) {
         const token = await AsyncStorage.getItem('token');
@@ -41,7 +41,6 @@ export default class CoursesDetails extends Component {
                         // console.log(responseJson);//Json resoponse is here
 
                         if (responseJson.status === 'success') {
-
 
                         } else {
                             this.setState({isLoading: false});
@@ -133,10 +132,11 @@ export default class CoursesDetails extends Component {
                                 </Body>
                             </CardItem>
                             <CardItem>
-                                <Button light style={{margin: 3, padding: 10}} onPress={this.onPressLike(1)}>
+                                <Button light style={{margin: 3, padding: 10}} onPress={this.onPressLike.bind(this, 1)}>
                                     <Icon type='Entypo' name='thumbs-up'/>
                                 </Button>
-                                <Button light style={{margin: 3, padding: 10}} onPress={this.onPressLike(-1)}>
+                                <Button light style={{margin: 3, padding: 10}}
+                                        onPress={this.onPressLike.bind(this, -1)}>
                                     <Icon type='Entypo' name='thumbs-down'/>
                                 </Button>
                             </CardItem>
@@ -146,11 +146,11 @@ export default class CoursesDetails extends Component {
                             <Text>Download</Text>
                         </Button>
                     </Content>
-
-
                 </Content>
             </Container>
 
         );
     }
 }
+
+export default CoursesDetails;
