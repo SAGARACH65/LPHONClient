@@ -17,7 +17,7 @@ import {
 import {AsyncStorage, NetInfo, StatusBar, Text} from 'react-native';
 import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
-import FilePickerManager from 'react-native-file-picker';
+
 
 const apiUrl = 'http://192.168.1.4:3000/api/addVideo';
 let title, body, tag, imageLink;
@@ -98,26 +98,7 @@ export default class AddVideos extends Component {
         });
     }
 
-    _onLocationChange(location) {
 
-        FilePickerManager.showFilePicker(null, (response) => {
-            console.log('Response = ', response);
-
-            if (response.didCancel) {
-                console.log('User cancelled file picker');
-            }
-            else if (response.error) {
-                console.log('FilePickerManager Error: ', response.error);
-            }
-            else {
-                this.setState({
-                    location: location
-                });
-            }
-        });
-
-
-    }
 
     render() {
         title = this.state.title;
