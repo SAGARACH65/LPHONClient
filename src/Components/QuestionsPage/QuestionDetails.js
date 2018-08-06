@@ -44,7 +44,6 @@ export default class QuestionDetails extends Component {
                         </Body>
                     </Header>
 
-
                     <Content>
                         <Card>
                             <CardItem header bordered>

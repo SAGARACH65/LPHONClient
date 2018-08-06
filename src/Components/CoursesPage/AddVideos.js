@@ -19,7 +19,7 @@ import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
 import FilePickerManager from 'react-native-file-picker';
 
-const apiUrl = 'http://192.168.43.91:3000/api/addVideo';
+const apiUrl = 'http://192.168.1.4:3000/api/addVideo';
 let title, body, tag, imageLink;
 export default class AddVideos extends Component {
     constructor() {

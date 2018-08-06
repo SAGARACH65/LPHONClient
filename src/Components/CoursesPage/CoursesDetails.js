@@ -16,8 +16,8 @@ import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 
 
-const apiUrl = 'http://192.168.43.91:3000/api/addVideoToProfile';
-const apiUrlLike = 'http://192.168.43.91:3000/api/addLikeDislike';
+const apiUrl = 'http://192.168.1.4:3000/api/addVideoToProfile';
+const apiUrlLike = 'http://192.168.1.4:3000/api/addLikeDislike';
 export default class CoursesDetails extends Component {
 
     async onPressLike(like) {
@@ -113,41 +113,40 @@ export default class CoursesDetails extends Component {
                         </Body>
                     </Header>
 
+                    <Content>
+                        <Card style={{flex: 0}}>
+                            <CardItem>
+                                <Body>
+                                <Image
+                                    source={{uri: this.props.dataArray.imageLink}}
+                                    style={{height: 181, width: 322, flex: 1}}/>
+                                <Text>
+                                    {this.props.dataArray.title}
+                                </Text>
+                                <Text>
+                                    {this.props.dataArray.details}
+                                </Text>
 
-                    <Card style={{flex: 0}}>
-                        <CardItem>
-                            <Body>
-                            <Image
-                                source={{uri: this.props.dataArray.imageLink}}
-                                style={{height: 181, width: 322, flex: 1}}/>
-                            <Text>
-                                {this.props.dataArray.title}
-                            </Text>
-                            <Text>{}</Text> <Text>{}</Text> <Text>{}</Text>
-                            <Text>
-                                {this.props.dataArray.details}
-                            </Text>
+                                <Text>
+                                    {this.props.dataArray.uploadedBY} {this.props.dataArray.uploadedDate.substr(0, 10)}
+                                </Text>
+                                </Body>
+                            </CardItem>
+                            <CardItem>
+                                <Button light style={{margin: 3, padding: 10}} onPress={this.onPressLike(1)}>
+                                    <Icon type='Entypo' name='thumbs-up'/>
+                                </Button>
+                                <Button light style={{margin: 3, padding: 10}} onPress={this.onPressLike(-1)}>
+                                    <Icon type='Entypo' name='thumbs-down'/>
+                                </Button>
+                            </CardItem>
+                        </Card>
 
-                            <Text>
-                                {this.props.dataArray.uploadedBY} {this.props.dataArray.uploadedDate.substr(0, 10)}
-                            </Text>
-                            </Body>
-                        </CardItem>
-                    </Card>
-
-
-                    <content>
-                        <Button dark onPress={this.onPressLike(1)}>
-                            <Icon type='Entypo' name='thumbs-up'/>
+                        <Button block light>
+                            <Text>Download</Text>
                         </Button>
-                        <Button dark onPress={this.onPressLike(-1)}>
-                            <Icon type='Entypo' name='thumbs-down'/>
-                        </Button>
-                    </content>
+                    </Content>
 
-                    <Button block light>
-                        <Text>Download</Text>
-                    </Button>
 
                 </Content>
             </Container>
