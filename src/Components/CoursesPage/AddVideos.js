@@ -115,7 +115,7 @@ export default class AddVideos extends Component {
                         </Button>
                     </Left>
                     <Body>
-                    <Title style={{textAlign: 'left'}}>Ask A Question</Title>
+                    <Title style={{textAlign: 'left'}}>Add Video</Title>
                     </Body>
                     <Right>
                         <Button onPress={this.sendVideo}>
@@ -139,7 +139,7 @@ export default class AddVideos extends Component {
                         </Item>
 
                         <Item rounded style={{marginTop: 20}}>
-                            <Input text={this.state.location} placeholder='ImageLocation'/>
+                            <Input text={this.state.location} placeholder='VideoLocation'/>
                             <Button transparent light onPress={this._onLocationChange}>
                                 <Text>...</Text>
                             </Button>

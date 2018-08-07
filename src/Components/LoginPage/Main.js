@@ -6,10 +6,12 @@ import MainScreen from '../MainPage/Main';
 import SignupScreen from '../SignupPage/SignupScreen';
 import AskQuestion from '../QuestionsPage/AskQuestion';
 import QuestionDetails from '../QuestionsPage/QuestionDetails';
-import  CourseDetails from '../CoursesPage/CoursesDetails';
+import CourseDetails from '../CoursesPage/CoursesDetails';
 import AddAnswer from '../QuestionsPage/AddAnswer';
+import webView from '../CoursesPage/webView'
 
 import AddVideo from '../CoursesPage/AddVideos'
+
 export default class LoginPage extends Component {
     render() {
         return (
@@ -33,6 +35,11 @@ export default class LoginPage extends Component {
                     />
                     <Scene key="CourseDetails"
                            component={CourseDetails}
+                           animation='fade'
+
+                    />
+                    <Scene key="webView"
+                           component={webView}
                            animation='fade'
 
                     />

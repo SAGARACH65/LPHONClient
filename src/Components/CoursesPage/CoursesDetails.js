@@ -20,6 +20,12 @@ const apiUrlLike = 'http://192.168.1.4:3000/api/addLikeDislike';
 
 class CoursesDetails extends Component {
 
+
+    onPressDownload() {
+        Actions.webView();
+    }
+
+
     async onPressLike(like) {
         const token = await AsyncStorage.getItem('token');
         NetInfo.isConnected.fetch().then(isConnected => {
@@ -142,7 +148,7 @@ class CoursesDetails extends Component {
                             </CardItem>
                         </Card>
 
-                        <Button block light>
+                        <Button block light onPress={this.onPressDownload.bind(this)}>
                             <Text>Download</Text>
                         </Button>
                     </Content>
