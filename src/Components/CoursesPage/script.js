@@ -51,7 +51,6 @@ let peer = new Peer('sagar');
 
         readChunk();
 
-
     });
 })(jQuery);
 
@@ -70,7 +69,6 @@ peer.on('connection', function (conn) {
             let s = document.getElementById('a');
             s.innerHTML = dataOrg;
 
-
             let blob = new window.Blob(dataOrg);
             let anchor = document.createElement('a');
             anchor.href = URL.createObjectURL(blob);
@@ -83,13 +81,11 @@ peer.on('connection', function (conn) {
                 anchor.click();
 
             } else {
-
                 let evt = document.createEvent('MouseEvents');
                 evt.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
                 evt.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
                 anchor.dispatchEvent(evt);
             }
-
 
         }
 

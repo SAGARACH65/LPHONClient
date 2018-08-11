@@ -12,7 +12,7 @@ import {
 } from "native-base";
 import {View, TouchableOpacity, NetInfo, AsyncStorage, RefreshControl} from 'react-native';
 
-const apiUrl = 'http://192.168.1.4:3000/api/getQuestions';
+const apiUrl = 'http://192.168.1.6:3000/api/getQuestions';
 import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 

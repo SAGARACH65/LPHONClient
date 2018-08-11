@@ -11,19 +11,59 @@ import {
     Title,
     Body,
 } from 'native-base';
-import {StatusBar, Text, View, TouchableOpacity, Image, NetInfo, AsyncStorage} from 'react-native';
+import {StatusBar, Text, View, TouchableOpacity, Image, NetInfo, AsyncStorage, Animated, Linking} from 'react-native';
 import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 
-const apiUrl = 'http://192.168.1.4:3000/api/addVideoToProfile';
-const apiUrlLike = 'http://192.168.1.4:3000/api/addLikeDislike';
+const apiUrl = 'http://192.168.1.6:3000/api/addVideoToProfile';
+const apiUrlLike = 'http://192.168.1.6:3000/api/addLikeDislike';
+import FilePickerManager from 'react-native-file-picker';
+
 
 class CoursesDetails extends Component {
 
 
-    onPressDownload() {
-        Actions.webView();
+    constructor() {
+        super();
+        this.state = {
+            file: ''
+        };
+
     }
+
+
+    // onPressDownload() {
+    //     // FilePickerManager.showFilePicker(null, (response) => {
+    //     //     console.log('Response = ', response);
+    //     //
+    //     //     if (response.didCancel) {
+    //     //         console.log('User cancelled file picker');
+    //     //     }
+    //     //     else if (response.error) {
+    //     //         console.log('FilePickerManager Error: ', response.error);
+    //     //     }
+    //     //     else {
+    //     //         this.setState({
+    //     //             file: response
+    //     //         });
+    //     //
+    //     //         var peer = new Peer('acharya');
+    //     //         var con = peer.connect('sagar', {
+    //     //             label: "file",
+    //     //             reliable: true,
+    //     //             serialization: "none"
+    //     //         });
+    //     //         var fileSize = this.state.file.fileName;
+    //     //         var name = this.state.file.fileName;
+    //     //         var mime = this.state.file.type;
+    //     //         var path = this.state.file.path;
+    //     //         var chunkSize = 64 * 1024; // bytes
+    //     //         var offset = 0;
+    //     //
+    //     //     }
+    //     // });
+    //
+    // }
 
 
     async onPressLike(like) {
@@ -74,6 +114,7 @@ class CoursesDetails extends Component {
 
 //this tells the server that the client viewed the video
     async componentDidMount() {
+
         NetInfo.isConnected.fetch().then(async isConnected => {
             const token = await AsyncStorage.getItem('token');
             if (isConnected) {
@@ -148,9 +189,11 @@ class CoursesDetails extends Component {
                             </CardItem>
                         </Card>
 
-                        <Button block light onPress={this.onPressDownload.bind(this)}>
+                        <Button block light onPress={Linking.openURL('http://192.168.1.6:3000/api/getP2PHTML')}>
                             <Text>Download</Text>
                         </Button>
+
+
                     </Content>
                 </Content>
             </Container>

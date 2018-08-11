@@ -31,7 +31,7 @@ import AddVideo from "./AddVideos";
 //     ]
 //
 // };
-const apiUrl = 'http://192.168.1.4:3000/api/getVideo';
+const apiUrl = 'http://192.168.1.6:3000/api/getVideo';
 export default class Main extends Component {
 
     constructor() {

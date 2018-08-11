@@ -19,7 +19,7 @@ import spinner from './loading.gif';
 import {Actions} from "react-native-router-flux/index";
 
 
-const apiURL = "http://192.168.1.4:3000/api/";
+const apiURL = "http://192.168.1.6:3000/api/";
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
@@ -28,11 +28,13 @@ const MARGIN = 40;
 
 export default class ButtonSubmit extends Component {
 
+
     constructor() {
         super();
 
         this.state = {
             isLoading: false,
+            file: ''
         };
 
         this.buttonAnimated = new Animated.Value(0);
@@ -40,7 +42,10 @@ export default class ButtonSubmit extends Component {
         this._onPress = this._onPress.bind(this);
     }
 
+
+
     async _onPress() {
+
         if (this.state.isLoading) return;
         // let c = this.props.username;
         // let b = this.props.password;

@@ -1,0 +1,44 @@
+package com.lphonclient.advancedwebview;
+
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class AdvancedWebviewPackage implements ReactPackage {
+    private AdvancedWebView manager;
+    private AdvancedWebviewModule module;
+
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
+
+    @Override public List createViewManagers(ReactApplicationContext reactContext) {
+        manager = new AdvancedWebView();
+        manager = new AdvancedWebView();
+        manager.setPackage(this);
+        return Arrays.<ViewManager>asList(manager);
+    }
+
+    @Override public List createNativeModules( ReactApplicationContext reactContext) {
+        List modules = new ArrayList<>();
+        module = new AdvancedWebviewModule(reactContext);
+        module.setPackage(this);
+        modules.add(module);
+        return modules;
+    }
+
+    public AdvancedWebView getManager(){
+        return manager;
+    }
+
+    public AdvancedWebviewModule getModule(){
+        return module;
+    }
+}

@@ -4,7 +4,7 @@ import {Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Ico
 import {Actions} from "react-native-router-flux/index";
 import Toast from "react-native-same-toast";
 
-const apiUrl = 'http://192.168.1.4:3000/api/getnews?token=';
+const apiUrl = 'http://192.168.1.6:3000/api/getnews?token=';
 
 export default class Main extends Component {
 
