@@ -19,7 +19,7 @@ import Toast from "react-native-same-toast";
 import {Actions} from "react-native-router-flux/index";
 
 
-const apiUrl = 'http://192.168.1.5:3000/api/addVideo';
+const apiUrl = 'http://192.168.1.6:3000/api/addVideo';
 let title, body, tag, imageLink;
 export default class AddVideos extends Component {
     constructor() {
@@ -99,7 +99,6 @@ export default class AddVideos extends Component {
     }
 
 
-
     render() {
         title = this.state.title;
         body = this.state.body;
@@ -136,13 +135,6 @@ export default class AddVideos extends Component {
                         </Item>
                         <Item rounded style={{marginTop: 20}}>
                             <Input onChangeText={(text) => this._onLinkChange(text)} placeholder='ImageLink'/>
-                        </Item>
-
-                        <Item rounded style={{marginTop: 20}}>
-                            <Input text={this.state.location} placeholder='VideoLocation'/>
-                            <Button transparent light onPress={this._onLocationChange}>
-                                <Text>...</Text>
-                            </Button>
                         </Item>
                     </Form>
                 </Content>

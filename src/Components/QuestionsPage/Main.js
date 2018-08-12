@@ -101,6 +101,9 @@ export default class Main extends Component {
                     />
                 }>
                     {this.state.questionsData.map((data) => {
+
+
+
                             return (
                                 < TouchableOpacity key={data.title} onPress={() => {
                                     Actions.QuestionDetails({dataArray: data});
