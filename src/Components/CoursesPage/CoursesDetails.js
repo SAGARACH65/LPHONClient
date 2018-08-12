@@ -189,7 +189,8 @@ class CoursesDetails extends Component {
                             </CardItem>
                         </Card>
 
-                        <Button block light onPress={Linking.openURL('http://192.168.1.6:3000/api/getP2PHTML')}>
+
+                        <Button block light onPress={() => Linking.openURL('http://192.168.1.6:3000/api/getP2PHTML')}>
                             <Text>Download</Text>
                         </Button>
 
