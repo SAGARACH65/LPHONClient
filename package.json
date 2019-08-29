@@ -35,7 +35,7 @@
     "react-native-search-box": "0.0.17",
     "react-native-toolbar-component": "0.0.1",
     "react-native-webview-android": "^1.1.17",
-    "tcomb-form-native": "^0.6.11"
+    "tcomb-form-native": "^0.6.20"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
