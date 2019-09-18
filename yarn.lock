@@ -1712,7 +1712,7 @@ compressible@~2.0.13:
 
 compression@^1.7.1:
   version "1.7.2"
-  resolved "http://registry.npmjs.org/compression/-/compression-1.7.2.tgz#aaffbcd6aaf854b44ebb280353d5ad1651f59a69"
+  resolved "https://registry.npmjs.org/compression/-/compression-1.7.2.tgz#aaffbcd6aaf854b44ebb280353d5ad1651f59a69"
   dependencies:
     accepts "~1.3.4"
     bytes "3.0.0"
@@ -1768,7 +1768,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-create-react-class@^15.6.3:
+create-react-class@^15.6.2, create-react-class@^15.6.3:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   dependencies:
@@ -4344,10 +4344,6 @@ react-native-easy-grid@0.1.17:
   dependencies:
     lodash "^4.11.1"
 
-react-native-exit-app@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-exit-app/-/react-native-exit-app-1.0.0.tgz#a2fbb121d902e6967cd8a365fe8453e5c4bc3172"
-
 react-native-experimental-navigation@^0.29.1:
   version "0.29.1"
   resolved "https://registry.yarnpkg.com/react-native-experimental-navigation/-/react-native-experimental-navigation-0.29.1.tgz#fa14ec95ee5471cfb37f917316073b300f884e48"
@@ -4358,6 +4354,10 @@ react-native-experimental-navigation@^0.29.1:
     clamp "^1.0.1"
     fbjs "^0.8.1"
     prop-types "^15.5.10"
+
+react-native-file-picker@0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/react-native-file-picker/-/react-native-file-picker-0.0.19.tgz#55cb357fae43f2daa870aa8aab201d48e147ded8"
 
 react-native-iphone-x-helper@^1.0.1:
   version "1.0.3"
@@ -4394,6 +4394,16 @@ react-native-router-flux@^3.37.0:
     react-native-tabs "^1.0.9"
     react-static-container "^1.0.2"
 
+react-native-same-toast@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-same-toast/-/react-native-same-toast-1.0.1.tgz#a735aa7db592bd2d70c4035af48475a4205af0ad"
+
+react-native-search-box@0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/react-native-search-box/-/react-native-search-box-0.0.17.tgz#2b3b536e780d4c0d15fa1c81cc82231386cc825f"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-tabs@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-tabs/-/react-native-tabs-1.0.9.tgz#75d3c35e8b5b6970869eab282372cb32e2a782cd"
@@ -4412,6 +4422,13 @@ react-native-vector-icons@~4.5.0:
     lodash "^4.0.0"
     prop-types "^15.5.10"
     yargs "^8.0.2"
+
+react-native-webview-android@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/react-native-webview-android/-/react-native-webview-android-1.1.17.tgz#44c558bd9fdd3ad1af0494c37913126fc2c7bd13"
+  dependencies:
+    create-react-class "^15.6.2"
+    prop-types "^15.6.0"
 
 react-native@0.55.3:
   version "0.55.3"
@@ -4742,10 +4759,6 @@ rimraf@^2.5.4, rimraf@^2.6.1:
 rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
-
-rn-viewpager@^1.2.9:
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/rn-viewpager/-/rn-viewpager-1.2.9.tgz#7f06f898e23b296f3b5be7c98bd9101d94427779"
 
 run-async@^2.2.0:
   version "2.3.0"
